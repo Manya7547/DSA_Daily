@@ -1,0 +1,51 @@
+class Solution {
+    public int countComponents(int n, int[][] edges) {
+
+        // initializing the graph arrayList
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for(int i = 0 ; i<n ; i++){
+            graph.add(new ArrayList<Integer>());
+        }
+
+        // fill in the adjacency list
+        for(int i = 0 ; i<edges.length ; i++){
+            int from = edges[i][0];
+            int to = edges[i][1];
+            graph.get(to).add(from);
+            graph.get(from).add(to);
+        }
+
+        //component id
+        int c = 0;
+
+        // make a visited array
+        int[] visited = new int[n];
+        for(int i = 0 ; i<n ; i++){
+            visited[i] = 0;
+        }
+
+        for(int i = 0 ; i<n ; i++){
+            if(visited[i]==0){
+                c++;
+                bfs(graph, visited, i, c);
+            }
+        }
+        return c;
+    }
+
+    private void bfs(ArrayList<ArrayList<Integer>> graph, int[] visited, int s, int c){
+        Queue<Integer> q = new LinkedList<>();
+        q.add(s); 
+        visited[s] = 1;
+
+        while(!q.isEmpty()){
+            int u = q.poll();
+            for(int v: graph.get(u)){
+                if(visited[v]==0){
+                    visited[v] = 1;
+                    q.add(v);
+                }
+            }
+        }
+    }
+}
