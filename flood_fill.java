@@ -16,6 +16,9 @@ public class flood_fill {
         Queue<int[]> q = new LinkedList<>();
         int old = image.get(pixel_row).get(pixel_column);
 
+        if (new_color == old)
+            return image;
+
         image.get(pixel_row).set(pixel_column, new_color);
         q.add(new int[] { pixel_row, pixel_column });
         while (!q.isEmpty()) {
