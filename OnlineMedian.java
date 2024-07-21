@@ -17,7 +17,7 @@ public class OnlineMedian {
         min_heap.add(max_heap.peek());
         max_heap.poll();
 
-        //
+        // a
         if (min_heap.size() > max_heap.size()) {
             max_heap.add(min_heap.peek());
             min_heap.poll();
