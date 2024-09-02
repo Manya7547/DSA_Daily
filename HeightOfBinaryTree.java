@@ -29,3 +29,31 @@ public class HeightOfBinaryTree {
         return Math.max(helper(node.left), helper(node.right)) + 1;
     }
 }
+
+/*
+ * Iterative(BFS) approach
+ * if(root == null){
+ * return 0;
+ * }
+ * 
+ * int height = 0;
+ * 
+ * // BFS
+ * 
+ * Queue<BinaryTreeNode> q = new LinkedList<>();
+ * q.add(root);
+ * 
+ * while(!q.isEmpty()){
+ * 
+ * // capture the size of the queue !!!
+ * int size=q.size();
+ * height++;
+ * 
+ * for(int i = 0 ; i < size ; i++){
+ * BinaryTreeNode curr = q.poll();
+ * if(curr.left!=null) q.add(curr.left);
+ * if(curr.right!=null) q.add(curr.right);
+ * }
+ * }
+ * return height;
+ */
